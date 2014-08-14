@@ -1,0 +1,16 @@
+= Troubleshooting
+
+  1. Have you checked that the 12V battery clips are on the right way? Red to red, black to back.
+  2. Is the red LED on? If not, see <<power-issues>>
+  3. Is the system behaving erratically? see <<power-issues>>
+  4. No sound? Check that the speaker connections are all well made
+
+
+[power-issues]
+== Power Issues
+
+  1. Whilst the battery is attached to the system, use a DMM to check the voltage
+     across the power pins, ensure that it is above 10V otherwise recharge the
+     battery.
+  2. Use a DMM to check the voltage across the first and second pin of the 7805
+     voltage regulator, if this is less than 4.9V then recharge the battery.

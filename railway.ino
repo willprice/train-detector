@@ -5,19 +5,13 @@
 #include <SPI.h>
 
 STATE global_state = NO_TRAIN;
-TMRpcm player;
 
 
 void setup() {
   Serial.begin(9600);
-  player.speakerPin = 9;
-  player.quality(1);
+  pinMode(ALARM_PIN, OUTPUT);
   pinMode(TRAIN_TRIGGER_PIN, INPUT);
   pinMode(ALARM_DISABLE_PIN, INPUT);
-  if (!SD.begin(SD_ChipSelectPin))
-    Serial.println("SD fail");
-  else
-    Serial.println("SD initialised");
 }
 
 void loop() {
@@ -80,18 +74,14 @@ void enableAlarm() {
 #ifdef DEBUG
   Serial.println("Enabling alarm");
 #endif
-  player.play("alarm.wav");
-  player.loop(1);
-
+  tone(ALARM_PIN, NOTE);
 }
 
 void disableAlarm() {
 #ifdef DEBUG
   Serial.println("Disabling alarm");
 #endif
-  player.loop(0);
-  player.disable();
-
+  noTone(ALARM_PIN);
 }
 
 void print_state(STATE state) {
